@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  server:
+    build:
+      context: ./gold-server/
+    image: gold-server:latest
+    volumes:
+      - type: bind
+        source: ./gold-server/
+        target: /app/
+    ports:
+      - 8080:8080
+    links:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+     - ./db/:/docker-entrypoint-initdb.d
