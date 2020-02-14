@@ -4,6 +4,7 @@ services:
     build:
       context: ./gold-server/
     image: gold-server:latest
+    working_dir: /app
     volumes:
       - ./gold-server/:/app
     ports:
